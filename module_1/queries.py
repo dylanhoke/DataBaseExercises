@@ -83,3 +83,18 @@ AVG_CHARACTER_WEAPONS = """
     GROUP BY character_id
     ) AS subquery"""
 
+ROW_COUNT = """
+    SELECT *
+    FROM review"""
+
+USER_REVIEWS = """
+    SELECT *
+    FROM review
+    WHERE Nature > 100 AND Shopping > 100"""
+
+
+AVG_REVIEWS = """
+    SELECT AVG(Sports),avg(Religious),avg(Nature),avg(Theatre),
+    avg(Shopping),avg(Picnic) 
+    FROM review"""
+
