@@ -15,7 +15,7 @@ cursor = connection.cursor()
 
 
 # Step 3 - write a query - (See the queries.py file)
-
+#change
 
 # Step 4 - Execute the query on the cursor and fetch the results
 #"pulling the results from the cursor"
