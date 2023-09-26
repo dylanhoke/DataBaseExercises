@@ -141,5 +141,5 @@ INSERT_DYLAN = """
 """
 
 DROP_CHARACTER_TABLE = """
-    DROP TABLE IF EXISTS character_table
+    DROP TABLE IF EXISTS characters
 """

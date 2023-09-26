@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     #Create destination table within PostGreSQL DB
     pg_conn,pg_curs = connect_to_pg()
-    # modify_db(pg_conn,pg_curs,DROP_CHARACTER_TABLE)
+    modify_db(pg_conn,pg_curs,DROP_CHARACTER_TABLE)
     modify_db(pg_conn,pg_curs,CREATE_CHARACTER_TABLE)
 
     # print(sl_characters[:3])
