@@ -46,7 +46,4 @@ if __name__ == "__main__":
             VALUES ('{character[1]}', {character[2]}, {character[3]},
             {character[4]}, {character[5]}, {character[6]},
             {character[7]}, {character[8]})
-            """
-        )
-
-    
+            """)
