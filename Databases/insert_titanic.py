@@ -1,6 +1,7 @@
 import psycopg2
 from os import getenv
 import pandas as pd
+import sqlite3 
 
 #postgreSQL connection credentials
 
@@ -24,10 +25,10 @@ CREATE_TITANIC_TABLE = """
         Pclass INT NOT NULL,
         Name VARCHAR(100) NOT NULL,
         Sex VARCHAR(10) NOT NULL,
-        Age float NOT NULL,
+        Age FLOAT NOT NULL,
         Siblings_Spouses_Aboard INT NOT NULL,
         Parents_Children_Aboard INT NOT NULL,
-        Fare float NOT NULL
+        Fare FLOAT NOT NULL
     );
 """
 
@@ -47,7 +48,7 @@ if __name__ == "__main__":
     records = df.values.tolist()
 
     for record in records:
-        insert_statement ="""
+        insert_statement = """
             INSERT INTO titanic_table (Survived,Pclass,Name,Sex,Age,
             Siblings_Spouses_Aboard,Parents_Children_Aboard,Fare)
             VALUES {};
