@@ -85,7 +85,8 @@ AVG_CHARACTER_WEAPONS = """
 
 ROW_COUNT = """
     SELECT *
-    FROM review"""
+    FROM demo
+"""
 
 USER_REVIEWS = """
     SELECT *
@@ -142,4 +143,66 @@ INSERT_DYLAN = """
 
 DROP_CHARACTER_TABLE = """
     DROP TABLE IF EXISTS characters
+"""
+
+CREATE_DEMO_TABLE = """
+    CREATE TABLE IF NOT EXISTS demo
+    (
+        "S" CHAR NOT NULL,
+        "X" INT NOT NULL,
+        "Y" INT NOT NULL
+    );
+"""
+
+INSERT_DEMO = """
+    INSERT INTO demo ("S", "X", "Y")
+    VALUES
+        ('g', 3, 9),
+        ('v', 5, 7),
+        ('f', 8, 7);
+"""
+XY_AT_LEAST_5 = """
+    SELECT X,Y FROM demo
+    WHERE X >=5 AND Y >=5
+"""
+
+UNIQUE_Y = """
+    SELECT COUNT(DISTINCT Y) FROM demo
+"""
+
+TEN_MOST_EXPENSIVE = """
+    SELECT ProductName, UnitPrice, CompanyName
+    FROM Product AS pd
+    JOIN Supplier AS sp 
+    ON pd.SupplierId = sp.Id
+    ORDER BY UnitPrice DESC
+    LIMIT 10;
+"""
+
+ADD_AGE = """
+    ALTER TABLE Employee
+    ADD Age INT;
+"""
+
+AGE_SOLVE = """
+    UPDATE Employee
+    SET Age = 
+	    CAST(SUBSTRING(HireDate,1,4)AS HD) - CAST(SUBSTRING(BirthDate,1,4)AS BD)
+"""
+
+AVG_HIRE_AGE = """
+    SELECT AVG(Age) FROM Employee
+"""
+
+EXPENSIVE_ITEMS = """
+    SELECT * FROM Product
+    ORDER BY UnitPrice DESC;
+"""
+
+LARGEST_CATEGORY = """
+    SELECT Category.Id,Category.CategoryName,COUNT(Product.CategoryId) AS PC FROM Category
+    LEFT JOIN Product
+    ON Category.Id = Product.CategoryId
+    GROUP BY Category.Id, Category.CategoryName
+    ORDER BY PC DESC;
 """
