@@ -1,22 +1,47 @@
-from queries import CREATE_DEMO_TABLE,INSERT_DEMO
 import sqlite3
 
-def connect_to_db(dbname = "demo_data.sqlite3"):
+
+def connect_to_db(dbname="demo_data.sqlite3"):
     return sqlite3.connect(dbname)
 
-def execute_query(conn,query):
-    #make the cursor 
+
+def execute_query(conn, query):
+
     curs = conn.cursor()
-    #execute the query
     curs.execute(query)
-    #pull the results
     conn.commit()
 
-row_count = 3
 
-xy_at_least_5 = 2
+CREATE_DEMO_TABLE = """
+    CREATE TABLE IF NOT EXISTS demo
+    (
+        "S" CHAR NOT NULL,
+        "X" INT NOT NULL,
+        "Y" INT NOT NULL
+    );
+"""
 
-unique_y = 2
+INSERT_DEMO = """
+    INSERT INTO demo ("S", "X", "Y")
+    VALUES
+        ('g', 3, 9),
+        ('v', 5, 7),
+        ('f', 8, 7);
+"""
+
+row_count = """
+    SELECT COUNT(*)
+    FROM demo
+"""
+
+xy_at_least_5 = """
+    SELECT COUNT(*) FROM demo
+    WHERE X >=5 AND Y >=5
+"""
+
+unique_y = """
+    SELECT COUNT(DISTINCT Y) FROM demo
+"""
 
 if __name__ == "__main__":
     conn = connect_to_db()

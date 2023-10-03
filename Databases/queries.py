@@ -21,7 +21,7 @@ TOTAL_CHARACTERS = """
 TOTAL_SUBCLASS = """
     SELECT COUNT(character_id)
     FROM charactercreator_character AS ccc
-    JOIN charactercreator_mage AS ccm 
+    JOIN charactercreator_mage AS ccm
     ON ccc.character_id = ccm.character_ptr_id
     JOIN charactercreator_necromancer AS ccn
     ON ccm.character_ptr_id = ccn.mage_ptr_id"""
@@ -67,7 +67,7 @@ CHARACTER_WEAPONS = """
 AVG_CHARACTER_ITEMS = """
     SELECT AVG(item_count) as average_item_count
     FROM (
-    SELECT character_id, count(*) AS item_count 
+    SELECT character_id, count(*) AS item_count
     FROM charactercreator_character_inventory
     GROUP BY character_id
     ) AS subquery"""
@@ -96,7 +96,7 @@ USER_REVIEWS = """
 
 AVG_REVIEWS = """
     SELECT AVG(Sports),avg(Religious),avg(Nature),avg(Theatre),
-    avg(Shopping),avg(Picnic) 
+    avg(Shopping),avg(Picnic)
     FROM review"""
 
 
@@ -173,7 +173,7 @@ UNIQUE_Y = """
 TEN_MOST_EXPENSIVE = """
     SELECT ProductName, UnitPrice, CompanyName
     FROM Product AS pd
-    JOIN Supplier AS sp 
+    JOIN Supplier AS sp
     ON pd.SupplierId = sp.Id
     ORDER BY UnitPrice DESC
     LIMIT 10;
@@ -186,8 +186,9 @@ ADD_AGE = """
 
 AGE_SOLVE = """
     UPDATE Employee
-    SET Age = 
-	    CAST(SUBSTRING(HireDate,1,4)AS HD) - CAST(SUBSTRING(BirthDate,1,4)AS BD)
+    SET Age =
+    CAST(SUBSTRING(HireDate,1,4)AS HD)-CAST(SUBSTRING(BirthDate,1,4)
+    AS BD)
 """
 
 AVG_HIRE_AGE = """
@@ -200,7 +201,8 @@ EXPENSIVE_ITEMS = """
 """
 
 LARGEST_CATEGORY = """
-    SELECT Category.Id,Category.CategoryName,COUNT(Product.CategoryId) AS PC FROM Category
+    SELECT Category.Id,Category.CategoryName,COUNT(Product.CategoryId)
+    AS PC FROM Category
     LEFT JOIN Product
     ON Category.Id = Product.CategoryId
     GROUP BY Category.Id, Category.CategoryName
